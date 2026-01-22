@@ -39,7 +39,7 @@ echo " - $SEMVER_TAG"
 # --- BUILD AND PUSH N8N ---
 echo "📦 Building and pushing n8n Docker image..."
 docker buildx build \
-  --platform linux/arm64 \
+  --platform linux/amd64 \
   --file docker/images/n8n/Dockerfile \
   --cache-from=type=registry,ref=$CACHE_TAG \
   --cache-to=type=registry,ref=$CACHE_TAG,mode=max \
@@ -60,7 +60,7 @@ RUNNERS_CACHE_TAG="${ACCOUNT_ID}.dkr.ecr.${AWS_REGION}.amazonaws.com/${RUNNERS_R
 
 echo "📦 Building and pushing runners Docker image..."
 docker buildx build \
-  --platform linux/arm64 \
+  --platform linux/amd64 \
   --file docker/images/runners/Dockerfile \
   --cache-from=type=registry,ref=$RUNNERS_CACHE_TAG \
   --cache-to=type=registry,ref=$RUNNERS_CACHE_TAG,mode=max \
